@@ -1,0 +1,23 @@
+body{
+    background: #191919;
+    font-family: sans-serif;
+    font-weight: 500px;
+    color: white;
+}
+
+#canvas {
+    border: 2px solid rgb(255, 90, 87);
+    border-radius: 24px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#canvas h1 {
+    padding-bottom: 45px;
+    font-size: 75px;
+}
+
