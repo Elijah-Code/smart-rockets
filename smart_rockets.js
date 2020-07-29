@@ -1,4 +1,4 @@
-var lifespan = 400;
+var lifespan = 250;
 var count = 0;
 var population;
 var target;
@@ -8,6 +8,17 @@ var rx = 185;
 var ry = 150;
 var rw = 200;
 var rh = 10;
+
+var rx1 = 410;
+var ry1 = 100;
+var rw1 = 10;
+var rh1 = 150;
+
+var rx2 = 150;
+var ry2 = 100;
+var rw2 = 10;
+var rh2 = 150;
+
 
 function setup() {
   var canvas = createCanvas(550,400);
@@ -26,17 +37,21 @@ function draw() {
   if (count == lifespan) {
     population.evaluate();
     population.selection();
-    // population = new Population();
     count = 0;
   }
+  document.getElementById('popsize').innerHTML = population.popsize;
   fill(255, 90, 87)
+
   rect(rx, ry, rw, rh)
+  rect(rx1, ry1, rw1, rh1)
+  rect(rx2, ry2, rw2, rh2)
   ellipse(target.x, target.y, 16, 16);
 }
 
+
 function Population() {
   this.rockets = [];
-  this.popsize = 25;
+  this.popsize = 100;
   this.matingpool = [];
   
   for (var i = 0; i < this.popsize; i++) {
@@ -52,6 +67,7 @@ function Population() {
       child.mutate();
       newRockets[i] = new Rocket(child);
     }
+
     this.rockets = newRockets;
   };
   
@@ -69,6 +85,7 @@ function Population() {
       if (maxfit < this.rockets[i].fitness) {
         maxfit = this.rockets[i].fitness;
       }
+      document.getElementById('fitness').innerHTML = maxfit;
     }
 
     for (var x = 0; x < this.popsize; x++) {
@@ -84,6 +101,7 @@ function Population() {
     }
   };
 }
+
 
 function DNA(genes) {
   if (genes) {
@@ -121,8 +139,9 @@ function DNA(genes) {
   };
 }
 
+
 function Rocket(dna) {
-  this.pos = createVector(width/2, height);
+  this.pos = createVector(width/2, height-20);
   this.vel = createVector();
   this.acc = createVector();
   this.vel.limit(4);
@@ -162,6 +181,14 @@ function Rocket(dna) {
       this.crashed = true;
     }
 
+    if (this.pos.x > rx2 && this.pos.x < rx2 + rw2 && this.pos.y > ry2 && this.pos.y < ry2 + rh2) {
+      this.crashed = true;
+    }
+
+    if (this.pos.x > rx1 && this.pos.x < rx1 + rw1 && this.pos.y > ry1 && this.pos.y < ry1 + rh1) {
+      this.crashed = true;
+    }
+
     if (this.pos.x > width || this.pos.x < 0) {
       this.crashed = true;
     }
@@ -191,3 +218,4 @@ function Rocket(dna) {
   };
   
 }
+
