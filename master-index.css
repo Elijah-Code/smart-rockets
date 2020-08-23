@@ -6,11 +6,11 @@ body{
 }
 
 p{
-    color: rgb(255, 90, 87);
+    color: #ff0057;
 }
 
 #canvas {
-    border: 2px solid rgb(255, 90, 87);
+    border: 2px solid #ff0057;
     border-radius: 24px;
     padding: 40px;
     position: absolute;

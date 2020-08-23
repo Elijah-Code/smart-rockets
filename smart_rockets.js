@@ -40,7 +40,7 @@ function draw() {
     count = 0;
   }
   document.getElementById('popsize').innerHTML = population.popsize;
-  fill(255, 90, 87)
+  fill(255,0,87)
 
   rect(rx, ry, rw, rh)
   rect(rx1, ry1, rw1, rh1)
