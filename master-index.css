@@ -5,6 +5,10 @@ body{
     color: white;
 }
 
+p{
+    color: rgb(255, 90, 87);
+}
+
 #canvas {
     border: 2px solid rgb(255, 90, 87);
     border-radius: 24px;
